@@ -23,6 +23,29 @@ namespace ElevatorProject
                 elevadores.Add(answers[i].elevador);
                 turnos.Add(answers[i].turno);
             }
+
+            Console.Write("A. Qual é o andar menos utilizado pelos usuários?\n" +
+                "O(s) andar(es) menos utilizado(s): " + string.Join(",", (andarMenosUtilizado().ToArray())));
+
+            Console.Write("\n\nB. Qual é o elevador mais frequentado e o período que se encontra maior fluxo?\n" +
+                "O(s) elevador(es) mais frequentado(s): " + string.Join(",", (elevadorMaisFrequentado().ToArray())) +
+                "\nO período de maior fluxo dos elevadores mais frequentados: " + string.Join(",", periodoMaiorFluxoElevadorMaisFrequentado()));
+
+            Console.Write("\n\nC. Qual é o elevador menos frequentado e o período que se encontra menor fluxo?\n" +
+                "O(s) elevador(es) menos frequentado(s): " + string.Join(",", (elevadorMenosFrequentado().ToArray())) +
+                "\nO período de menor fluxo dos elevadores menos frequentados: " + string.Join(",", periodoMenorFluxoElevadorMenosFrequentado()));
+
+            Console.Write("\n\nD. Qual o período de maior utilização do conjunto de elevadores?\n" +
+                "O(s) periodo(s) de maior utilização do conjunto de elevadores: " + string.Join(",", periodoMaiorUtilizacaoConjuntoElevadores()));
+
+            Console.Write("\n\nE. Qual o percentual de uso de cada elevador com relação a todos os serviços prestados? " +
+                "\nO percentual de uso do elevador A em relação a todos os serviços prestados: " + percentualDeUsoElevadorA() + "%" +
+                "\nO percentual de uso do elevador B em relação a todos os serviços prestados: " + percentualDeUsoElevadorB() + "%" +
+                "\nO percentual de uso do elevador C em relação a todos os serviços prestados: " + percentualDeUsoElevadorC() + "%" +
+                "\nO percentual de uso do elevador D em relação a todos os serviços prestados: " + percentualDeUsoElevadorD() + "%" +
+                "\nO percentual de uso do elevador E em relação a todos os serviços prestados: " + percentualDeUsoElevadorE() + "%");
+
+            Console.Write("\n\n");
         }
 
         /// <summary> Deve retornar uma List contendo o(s) andar(es) menos utilizado(s). </summary> 
@@ -152,7 +175,7 @@ namespace ElevatorProject
 
                 counter++;
             }
-            return elevMaior;
+            return elevMaior.Distinct().ToList();
         }
 
         /// <summary> Deve retornar uma List contendo o período de menor fluxo de cada um dos elevadores menos frequentados (se houver mais de um). </summary> 
@@ -200,7 +223,7 @@ namespace ElevatorProject
                 counter++;
             }
 
-            return elevMenor;
+            return elevMenor.Distinct().ToList();
         }
 
         /// <summary> Deve retornar uma List contendo o(s) periodo(s) de maior utilização do conjunto de elevadores. </summary> 
